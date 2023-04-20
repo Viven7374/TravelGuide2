@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragment1"
+        android:enabled="true"
+        android:icon="@drawable/home_48px"
+        android:title="Home"/>
+    <item
+        android:id="@+id/fragment2"
+        android:enabled="true"
+        android:icon="@drawable/add_location_alt_48px"
+        android:title="Map"/>
+    <item
+        android:id="@+id/fragment3"
+        android:enabled="true"
+        android:icon="@drawable/calendar_today_48px"
+        android:title="Calendar"/>
+    <item
+        android:id="@+id/fragment4"
+        android:enabled="true"
+        android:icon="@drawable/person_48px"
+        android:title="Person"/>
+</menu>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TravelGuide2</string>
+    //Headings
+    <string name="heading_one">Quick &amp;Easy Payments</string>
+    <string name="heading_two">Instant Notification</string>
+    <string name="heading_three">Cashless Payment</string>
+    <string name="heading_fourth">Pay Anywhere</string>
+
+    //Description
+    <string name="desc_one">Grow your business By Accepting Card Payments with The New Gard Reader</string>
+    <string name="desc_two">Lorem ipsumdolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut</string>
+    <string name="desc_three">Lorem ipsumdolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut</string>
+    <string name="desc_fourth">Lorem ipsumdolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut</string>
+
+
+</resources>
