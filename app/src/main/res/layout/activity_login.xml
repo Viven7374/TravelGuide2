@@ -32,7 +32,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Account" />
+            android:hint="Account"
+            android:id="@+id/login_name"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -50,7 +51,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:hint="Password" />
+            android:hint="Password"
+            android:id="@+id/login_pw"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.button.MaterialButton
         android:id="@+id/log_ButtonRegister"
