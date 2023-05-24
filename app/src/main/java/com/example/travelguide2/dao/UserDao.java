@@ -17,7 +17,7 @@ public class UserDao {
     public int login(String userName,String userPw){
         HashMap<String,Object> map = new HashMap<>();
         //建立连接
-        Connection connection = JDBCUtils.gerConnection();
+        Connection connection = JDBCUtils.getConnection();
         int msg = 0;
         try {
             String sql = "select * from user where userName = ?";
@@ -72,7 +72,7 @@ public class UserDao {
     //注册
     public boolean register(User user){
         HashMap<String,Object> map = new HashMap<>();
-        Connection connection = JDBCUtils.gerConnection();
+        Connection connection = JDBCUtils.getConnection();
         try {
             String sql = "insert into user(userName,userPw) values(?,?)";
             if (connection != null){
@@ -103,7 +103,7 @@ public class UserDao {
 
     //根据用户名查找该用户是否存在
     public User findUser(String userName){
-        Connection connection = JDBCUtils.gerConnection();
+        Connection connection = JDBCUtils.getConnection();
         User user = null;
         try {
             String sql = "select * from user where userName = ?";

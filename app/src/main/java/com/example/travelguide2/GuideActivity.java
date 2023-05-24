@@ -27,6 +27,7 @@ public class GuideActivity extends AppCompatActivity {
         skipbtn=findViewById(R.id.skipButton);
         nextbtn=findViewById(R.id.nextbtn);
 
+        //get started 按钮跳转
         nextbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,6 +40,7 @@ public class GuideActivity extends AppCompatActivity {
                 }
             }
         });
+        //跳过按钮跳转
         skipbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

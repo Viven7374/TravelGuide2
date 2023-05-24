@@ -23,7 +23,7 @@
             app:menu="@menu/top_app_bar"
             app:navigationIcon="@drawable/menu_48px"
             app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:title="page_title" />
+            app:title="TravelGuide" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -114,6 +114,7 @@
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
+
 
     </androidx.core.widget.NestedScrollView>
 
