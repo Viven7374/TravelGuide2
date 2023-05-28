@@ -16,6 +16,7 @@
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/drawable/person_48px.xml" value="0.1" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/drawable/schedule_48px.xml" value="0.1" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/drawable/search_48px.xml" value="0.1" />
+        <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/drawable/settings_48px.xml" value="0.1" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/drawable/stroke_color.xml" value="0.1" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/font/font_family.xml" value="0.21851851851851853" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/font/roboto.xml" value="0.21851851851851853" />
@@ -27,14 +28,17 @@
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/activity_main_fragment.xml" value="0.19947916666666668" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/activity_register.xml" value="0.19947916666666668" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_blank.xml" value="0.19947916666666668" />
+        <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_collect.xml" value="0.153125" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_first.xml" value="0.18489583333333334" />
-        <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_fourth.xml" value="0.19947916666666668" />
+        <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_fourth.xml" value="0.16666666666666666" />
+        <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_post.xml" value="0.153125" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_second.xml" value="0.19947916666666668" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_third.xml" value="0.17447916666666666" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/slider_layout.xml" value="0.1984375" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1361111111111111" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/menu/nav_menu.xml" value="0.19947916666666668" />
-        <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/menu/top_app_bar.xml" value="0.22" />
+        <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/menu/top_app_bar.xml" value="0.16666666666666666" />
+        <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/menu/top_app_bar4.xml" value="0.153125" />
         <entry key="..\:/Users/afugy/AndroidStudioProjects/TravelGuide2/app/src/main/res/layout/activity_guide.xml" value="0.19947916666666668" />
         <entry key="..\:/Users/afugy/AndroidStudioProjects/TravelGuide2/app/src/main/res/layout/activity_login.xml" value="0.22" />
         <entry key="..\:/Users/afugy/AndroidStudioProjects/TravelGuide2/app/src/main/res/layout/activity_main_fragment.xml" value="0.19947916666666668" />

@@ -11,6 +11,9 @@
     <string name="desc_two">Lorem ipsumdolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut</string>
     <string name="desc_three">Lorem ipsumdolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut</string>
     <string name="desc_fourth">Lorem ipsumdolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut</string>
+    <string name="appbar_spring_behavior">com.google.android.material.appbar.AppBarLayoutSpringBehavior</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

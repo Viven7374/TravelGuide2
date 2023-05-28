@@ -1,4 +1,4 @@
-package com.example.travelguide2;
+package com.example.travelguide2.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+
+import com.example.travelguide2.R;
 
 public class ViewPagerAdapter extends PagerAdapter {
 
