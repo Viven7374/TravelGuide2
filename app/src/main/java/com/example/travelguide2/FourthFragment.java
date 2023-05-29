@@ -2,8 +2,6 @@ package com.example.travelguide2;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
@@ -11,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.travelguide2.adapter.ViewPagerAdapter;
+import com.example.travelguide2.adapter.FragmentVpTittleAdapter;
 import com.example.travelguide2.fragment.CollectFragment;
 import com.example.travelguide2.fragment.PostFragment;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -77,7 +75,7 @@ public class FourthFragment extends Fragment {
         // 设置选中下划线颜色
         tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.colorPrimary, null));
         //绑定viewpager
-        tabLayout.setupWithViewPager(vp, false);
+        tabLayout.setupWithViewPager(vp,false);
         initData();
         vpAdapter=new FragmentVpTittleAdapter(getChildFragmentManager(),fragmentList,titleList);
         vp.setAdapter(vpAdapter);
