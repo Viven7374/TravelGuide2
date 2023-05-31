@@ -1,5 +1,6 @@
 package com.example.travelguide2;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.travelguide2.adapter.FragmentVpTittleAdapter;
 import com.example.travelguide2.fragment.CollectFragment;
@@ -21,6 +23,7 @@ import java.util.List;
 public class FourthFragment extends Fragment {
     //声明变量
     private MaterialToolbar toolbar;
+    private Button editButton;
     private ViewPager vp;
     private TabLayout tabLayout;
     private List<Fragment> fragmentList;
@@ -81,6 +84,16 @@ public class FourthFragment extends Fragment {
         vp.setAdapter(vpAdapter);
         // 设置ViewPager默认显示index
         vp.setCurrentItem(0);
+
+        //---------------------------编辑按钮监听--------------------------------------------------
+        editButton=v.findViewById(R.id.edit_info_bt);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), InfoActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return v;
     }
