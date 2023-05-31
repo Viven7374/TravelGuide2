@@ -1,6 +1,7 @@
 package com.example.travelguide2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +31,7 @@ public class FourthFragment extends Fragment {
     //声明变量
     private TextView indexName, indexDescription;
     private ImageView indexPortrait;
-
+    private Button editButton;
     private MaterialToolbar toolbar;
     private ViewPager vp;
     private TabLayout tabLayout;
@@ -114,7 +116,19 @@ public class FourthFragment extends Fragment {
         User user = userDao.getUserInfo(userName);
         indexDescription.setText(user.getDescription());
 
+        //编辑按钮监听
+        editButton=v.findViewById(R.id.edit_info_bt);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(),InfoActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
         return v;
+
     }
 
     private void initData() {

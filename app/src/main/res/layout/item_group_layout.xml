@@ -26,13 +26,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@null"
+
             android:gravity="center_vertical"
             android:hint="请输入姓名"
-            android:paddingLeft="32px"
+            android:paddingLeft="32dp"
             android:singleLine="true"
             android:textSize="13sp" />
-
+<!--        android:background="@null"-->
 
         <!--点击跳转或者弹出选择框-->
         <ImageView
@@ -48,5 +48,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="?attr/background" />
+         />
+<!--    android:background="?attr/background"-->
 </LinearLayout>

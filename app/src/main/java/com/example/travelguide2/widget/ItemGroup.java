@@ -46,12 +46,12 @@ public class ItemGroup extends FrameLayout{
 
     //初始化View
     private void initView(Context context) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_group_layout, null);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_group_layout,null);
         itemGroupLayout = (LinearLayout) view.findViewById(R.id.item_group_layout);
         titleTv = (TextView) view.findViewById(R.id.title_tv);
         contentEdt = (TextView) view.findViewById(R.id.content_edt);
         jtRightIv = (ImageView) view.findViewById(R.id.jt_right_iv);
-        addView(view); //把自定义的这个组合控件的布局加入到当前FramLayout
+        addView(view); //把自定义的这个组合控件的布局加入到当前FrameLayout
     }
     /**
      * 初始化相关属性，引入相关属性
