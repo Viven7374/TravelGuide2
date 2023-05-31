@@ -3,6 +3,7 @@ package com.example.travelguide2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -12,6 +13,12 @@ import android.widget.Toast;
 
 import com.example.travelguide2.dao.UserDao;
 import com.example.travelguide2.entity.User;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.zip.DataFormatException;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -51,9 +58,18 @@ public class RegisterActivity extends AppCompatActivity {
                 else if (!rePw.trim().equals(reRpw.trim()))
                     Toast.makeText(getApplicationContext(),"两次输入密码不一致",Toast.LENGTH_SHORT).show();
                 else {
+                    Date nowdate = new Date(System.currentTimeMillis());
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     User user = new User();
                     user.setUserName(reName);
                     user.setUserPw(rePw);
+                    user.setGender("");
+                    user.setEmail("");
+                    user.setCreate_time(Timestamp.valueOf(sdf.format(nowdate)).toString());
+                    user.setBirthday("2000-1-1");
+                    user.setHead_portrait("");
+                    user.setDescription("");
+
                     UserDao userDao = new UserDao();
                     User user1 = userDao.findUser(user.getUserName());
                     if (user1 != null){
@@ -62,9 +78,13 @@ public class RegisterActivity extends AppCompatActivity {
                         boolean flag = userDao.register(user);
                         if (flag){
                             Toast.makeText(getApplicationContext(),"注册成功！",Toast.LENGTH_SHORT).show();
+                            SharedPreferences.Editor editor = getSharedPreferences("UserInfo",MODE_PRIVATE).edit();
+                            editor.putString(reName,rePw);
+                            editor.apply();
+                            finish();
                             Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                             startActivity(intent);
-                            finish();
+
                         }
                     }
                 }

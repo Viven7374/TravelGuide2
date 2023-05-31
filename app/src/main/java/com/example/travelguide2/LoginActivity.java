@@ -3,6 +3,7 @@ package com.example.travelguide2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -16,6 +17,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button btReg,btSubmit;
     private EditText loginName,loginPw;
+    private int LogResultCode = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +54,18 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"登陆失败！",Toast.LENGTH_SHORT).show();
                 }else if (msg == 1){
                     Toast.makeText(getApplicationContext(),"登陆成功！",Toast.LENGTH_SHORT).show();
+                    //将用户名传递到用户界面
+                    SharedPreferences userInfo = getSharedPreferences("UserInfo",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = getSharedPreferences("UserInfo",MODE_PRIVATE).edit();
+                    editor.putString("logUser",loginName.getText().toString());
+                    editor.apply();
+                    Intent intent = new Intent();
+                    intent.putExtra("username",loginName.getText().toString());
+                    setResult(LogResultCode,intent);
 
-                    Intent intent = new Intent(LoginActivity.this,MainFragmentActivity.class);
-                    startActivity(intent);
+                    //登陆成功，跳转至主界面
+                    Intent mainIntent = new Intent(LoginActivity.this,MainFragmentActivity.class);
+                    startActivity(mainIntent);
                     finish();
 
                 }else if (msg == 2){

@@ -1,15 +1,22 @@
 package com.example.travelguide2;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.travelguide2.adapter.FragmentVpTittleAdapter;
+import com.example.travelguide2.dao.UserDao;
+import com.example.travelguide2.entity.User;
 import com.example.travelguide2.fragment.CollectFragment;
 import com.example.travelguide2.fragment.PostFragment;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -20,6 +27,9 @@ import java.util.List;
 
 public class FourthFragment extends Fragment {
     //声明变量
+    private TextView indexName, indexDescription;
+    private ImageView indexPortrait;
+
     private MaterialToolbar toolbar;
     private ViewPager vp;
     private TabLayout tabLayout;
@@ -58,7 +68,18 @@ public class FourthFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        //适用于网络请求数据量很小
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
         View v=inflater.inflate(R.layout.fragment_fourth, container, false);
+        //控件初始化
+        indexName = v.findViewById(R.id.index_name);
+        indexDescription = v.findViewById(R.id.index_description);
+        indexPortrait = v.findViewById(R.id.index_portrait);
+
         //通过id找到组件
         toolbar=v.findViewById(R.id.toolbar4);
         tabLayout=v.findViewById(R.id.tab_layout4);
@@ -81,6 +102,17 @@ public class FourthFragment extends Fragment {
         vp.setAdapter(vpAdapter);
         // 设置ViewPager默认显示index
         vp.setCurrentItem(0);
+
+        //显示个人信息
+        SharedPreferences spUserInfo = getActivity().getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
+        String userName = spUserInfo.getString("logUser","");
+        if (!userName.equals("")){
+            indexName.setText(userName);
+        }
+        //显示用户简介
+        UserDao userDao = new UserDao();
+        User user = userDao.getUserInfo(userName);
+        indexDescription.setText(user.getDescription());
 
         return v;
     }

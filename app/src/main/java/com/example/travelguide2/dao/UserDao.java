@@ -8,7 +8,10 @@ import com.example.travelguide2.utils.JDBCUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class UserDao {
 
@@ -74,13 +77,19 @@ public class UserDao {
         HashMap<String,Object> map = new HashMap<>();
         Connection connection = JDBCUtils.getConnection();
         try {
-            String sql = "insert into user(userName,userPw) values(?,?)";
+            String sql = "insert into user(userName,userPw,gender,email,create_time,birthday,head_portrait,description) values(?,?,?,?,?,?,?,?)";
             if (connection != null){
                 PreparedStatement ps = connection.prepareStatement(sql);
                 if (ps != null){
                     //将数据插入数据库
                     ps.setString(1, user.getUserName());
                     ps.setString(2, user.getUserPw());
+                    ps.setString(3,user.getGender());
+                    ps.setString(4,user.getEmail());
+                    ps.setString(5,user.getCreate_time());
+                    ps.setString(6,user.getBirthday());
+                    ps.setString(7,user.getHead_portrait());
+                    ps.setString(8,user.getDescription());
 
                     int rs = ps.executeUpdate();
                     if (rs > 0)
@@ -116,7 +125,13 @@ public class UserDao {
                         int id = rs.getInt(1);
                         String userName1 = rs.getString(2);
                         String userPw = rs.getString(3);
-                        user = new User(id,userName1,userPw);
+                        String gender = rs.getString(4);
+                        String email = rs.getString(5);
+                        String create_time = rs.getString(6);
+                        String birthday = rs.getString(7);
+                        String head_portrait = rs.getString(8);
+                        String description = rs.getString(9);
+                        user = new User(id,userName1,userPw,gender,email,create_time,birthday,head_portrait,description);
                     }
                 }
             }
@@ -127,6 +142,40 @@ public class UserDao {
         }
         return user;
     }
+
+    //查询用户所有信息
+    public User getUserInfo(String userName){
+        Connection connection = JDBCUtils.getConnection();
+        User user = null;
+        try {
+            String sql="select * from user where userName = ?";
+            if (connection!=null){
+                PreparedStatement ps = connection.prepareStatement(sql);
+                if (ps!=null){
+                    ps.setString(1,userName);
+                    ResultSet rs = ps.executeQuery();
+                    while (rs.next()){
+                        user = new User();
+                        user.setUserId(rs.getInt("userId"));
+                        user.setUserName(userName);
+                        user.setUserPw(rs.getString("userPw"));
+                        user.setGender(rs.getString("gender"));
+                        user.setEmail(rs.getString("email"));
+                        user.setCreate_time(rs.getString("create_time"));
+                        user.setBirthday(rs.getString("birthday"));
+                        user.setHead_portrait(rs.getString("head_portrait"));
+                        user.setDescription(rs.getString("description"));
+                    }
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.e(TAG,"异常getUserInfo:"+ e.getMessage());
+            return null;
+        }
+        return user;
+    }
+
 
 
 }
