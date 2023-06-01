@@ -62,6 +62,14 @@
           app:title="昵称" />
 
       <com.example.travelguide2.widget.ItemGroup
+          android:id="@+id/ig_description"
+          android:layout_width="match_parent"
+          android:layout_height="46dp"
+          app:edt_hint_content="未选择"
+          app:paddingLeft="32dp"
+          app:title="简介" />
+
+      <com.example.travelguide2.widget.ItemGroup
           android:id="@+id/ig_gender"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
@@ -70,20 +78,29 @@
           app:title="性别"/>
 
       <com.example.travelguide2.widget.ItemGroup
-          android:id="@+id/ig_region"
+          android:id="@+id/ig_email"
           android:layout_width="match_parent"
           android:layout_height="46dp"
           app:edt_hint_content="未选择"
           app:paddingLeft="32dp"
-          app:title="常住地" />
+          app:title="邮箱" />
 
       <com.example.travelguide2.widget.ItemGroup
-          android:id="@+id/ig_brithday"
+          android:id="@+id/ig_birthday"
           android:layout_width="match_parent"
           android:layout_height="46dp"
           app:edt_hint_content="未选择"
           app:paddingLeft="32dp"
           app:title="生日" />
+
+      <com.example.travelguide2.widget.ItemGroup
+          android:id="@+id/ig_createTime"
+          android:layout_width="match_parent"
+          android:layout_height="46dp"
+          app:edt_hint_content="未选择"
+          app:paddingLeft="32dp"
+          app:title="创建时间" />
+
 
     </LinearLayout>
 

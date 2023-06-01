@@ -176,6 +176,34 @@ public class UserDao {
         return user;
     }
 
+    //修改用户信息
+    public Boolean updateInfo(String userName){
+        Connection connection = JDBCUtils.getConnection();
+        User user = null;
+        try {
+            String sql ="update user set gender = ?, email = ?, birthday = ?, description = ? where userName = ?";
+            if (connection!=null){
+                PreparedStatement ps = connection.prepareStatement(sql);
+                if (ps!=null){
+                    ps.setString(1, user.getGender());
+                    ps.setString(2, user.getEmail());
+                    ps.setString(3, user.getBirthday());
+                    ps.setString(4, user.getDescription());
+                    ps.setString(5,userName);
+
+                    int value = ps.executeUpdate();
+                    if (value>0){
+                        return true;
+                    }
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.e(TAG,"异常updateInfo:"+e.getMessage());
+        }
+        return false;
+    }
+
 
 
 }

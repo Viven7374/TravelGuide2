@@ -76,6 +76,7 @@ public class FourthFragment extends Fragment {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+
         View v=inflater.inflate(R.layout.fragment_fourth, container, false);
         //控件初始化
         indexName = v.findViewById(R.id.index_name);
