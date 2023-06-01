@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     //登陆成功，跳转至主界面
                     Intent mainIntent = new Intent(LoginActivity.this,MainFragmentActivity.class);
+//                    intent.putExtra("id","1");
                     startActivity(mainIntent);
                     finish();
 

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -18,11 +19,23 @@ public class MainFragmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_fragment);
 
+//        Intent intent = getIntent();
+//        int id = intent.getIntExtra("id",0);
+//        if (id == 4){
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment4,new FourthFragment())
+//                    .addToBackStack(null).commit();
+//        }else if (id == 1){
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment1,new FirstFragment())
+//                    .addToBackStack(null).commit();
+//        }
+
         if (savedInstanceState==null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new FirstFragment()).commit();
         }
         bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment = null;
