@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.os.StrictMode;
 import android.text.InputFilter;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -26,11 +28,15 @@ import com.example.travelguide2.widget.ItemGroup;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.internal.ToolbarUtils;
 
+import java.util.Calendar;
+
 public class InfoActivity extends AppCompatActivity {
 
     private ItemGroup igId,igName,igDescription,igGender,igEmail,igBirthday,igCreateTime;
     private LinearLayout riPortrait;
     Toolbar toolBar;
+    int selectedIndex;
+    private String[] strGender;
 
 
 
@@ -55,6 +61,8 @@ public class InfoActivity extends AppCompatActivity {
         igBirthday = findViewById(R.id.ig_birthday);
         igCreateTime = findViewById(R.id.ig_createTime);
         toolBar=findViewById(R.id.toolbar_edit);
+        selectedIndex=-1;
+        strGender=new String[]{"男","女"};
 
         //获取当前登陆用户
         SharedPreferences sp = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
@@ -78,6 +86,7 @@ public class InfoActivity extends AppCompatActivity {
                 final EditText input = new EditText(InfoActivity.this);
                 input.setFilters(new InputFilter[]{new InputFilter.LengthFilter(200)});
                 AlertDialog.Builder builder = new AlertDialog.Builder(InfoActivity.this);
+                builder.setTitle("请填写");
                 builder.setView(input).setNegativeButton("取消",null);
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -89,6 +98,68 @@ public class InfoActivity extends AppCompatActivity {
                     }
                 });
                 builder.show();
+            }
+        });
+        //选择性别
+        igGender.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(InfoActivity.this);
+                builder.setTitle("请选择");
+                builder.setSingleChoiceItems(strGender, 0, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        selectedIndex = i;
+                    }
+                });
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (selectedIndex == 0){
+                            igGender.getContentEdt().setText("男");
+                        }else if (selectedIndex == 1){
+                            igGender.getContentEdt().setText("女");
+                        }
+                    }
+                });
+                builder.setNegativeButton("取消",null);
+                builder.show();
+            }
+        });
+        //填写邮箱
+        igEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final EditText input = new EditText(InfoActivity.this);
+                input.setFilters(new InputFilter[]{new InputFilter.LengthFilter(50)});
+                AlertDialog.Builder builder = new AlertDialog.Builder(InfoActivity.this);
+                builder.setTitle("请填写");
+                builder.setView(input).setNegativeButton("取消",null);
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String sign = input.getText().toString();
+                        if (sign!=null && !sign.isEmpty()){
+                            igEmail.getContentEdt().setText(sign);
+                        }
+                    }
+                });
+                builder.show();
+            }
+        });
+        //选择生日
+        igBirthday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(InfoActivity.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                        igBirthday.getContentEdt().setText(new StringBuilder().append(year).append("-")
+                                .append(month+1).append("-").append(dayOfMonth));
+                    }
+                }, Calendar.getInstance().get(Calendar.YEAR),Calendar.getInstance().get(Calendar.MONTH),
+                        Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
             }
         });
 
