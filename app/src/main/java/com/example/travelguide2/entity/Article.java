@@ -2,8 +2,22 @@ package com.example.travelguide2.entity;
 
 public class Article {
 
-    public String author,release_date,title,content;
+    public String author,release_date,title,content,cover_picture;
     public int id,views;
+
+
+    public Article() {
+    }
+
+    public Article(String author, String release_date, String title, String content, int id, int views,String cover_picture) {
+        this.author = author;
+        this.release_date = release_date;
+        this.title = title;
+        this.content = content;
+        this.id = id;
+        this.views = views;
+        this.cover_picture=cover_picture;
+    }
 
     public String getAuthor() {
         return author;
@@ -51,5 +65,13 @@ public class Article {
 
     public void setViews(int views) {
         this.views = views;
+    }
+
+    public String getCover_picture() {
+        return cover_picture;
+    }
+
+    public void setCover_picture(String cover_picture) {
+        this.cover_picture = cover_picture;
     }
 }

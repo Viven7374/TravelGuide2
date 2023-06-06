@@ -14,17 +14,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleDao {
-    static List<Article> articleList=new ArrayList<>();//存放文章的数组
-    private static Article article=new Article();//初始化数组
 
-    public static List<Article> getInfoById(int id){
+
+    //通过ID查找文章全部信息
+    public List<Article> getAllInfo(){
+        List<Article> articleList=new ArrayList<>();//存放文章的数组
+        Article article=new Article();//初始化数组
         Connection connection = getConnection();
         try {
-            String sql = "select * from article where id=?";
+            String sql = "select * from article";
+//            String sql = "select * from article where id=?";
             if (connection!=null){
                 PreparedStatement ps = connection.prepareStatement(sql);
                 if (ps!=null){
-                    ps.setInt(1, id);
+//                    ps.setInt(1, id);
                     ResultSet rs = ps.executeQuery();
                     if(rs!=null){
                         int count = rs.getMetaData().getColumnCount();//如果结果集不为空，先获取列的总数
@@ -55,6 +58,8 @@ public class ArticleDao {
                                         article.views=rs.getInt(field);
                                         break;
                                     //图片获得
+                                    case "cover_picture":
+                                        article.cover_picture=null;
 
                                 }
                             }
@@ -64,6 +69,7 @@ public class ArticleDao {
                         }
                         connection.close();
                         ps.close();
+//                        Log.e("sqllist","值:  "+articleList);
                         return articleList;
                     }else {
                         return null;
