@@ -1,34 +1,46 @@
 package com.example.travelguide2;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.travelguide2.adapter.RCModel;
 import com.example.travelguide2.adapter.RecyclerViewAdapter;
+import com.example.travelguide2.dao.ArticleDao;
+import com.example.travelguide2.entity.Article;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FirstFragment extends Fragment {
 
     //声明
-    RecyclerView recyclerView;
-    ArrayList<RCModel> modelArrayList;
+    ArrayList<Article> articleList;
     RecyclerViewAdapter rcAdapter;
-    String[] title = new String[]{"最美西湖十景", "灵隐寺", "云栖竹径", "啦啦啦", "西湖泛舟"};
-    int[] image = new int[]{
-            R.drawable.image2,
-            R.drawable.image3,
-            R.drawable.image4,
-            R.drawable.image5,
-            R.drawable.index_a,
-    };
+    RecyclerView recyclerView;
+
+//    RecyclerView recyclerView;
+//    ArrayList<RCModel> modelArrayList;
+//    RecyclerViewAdapter rcAdapter;
+//    String[] title = new String[]{"最美西湖十景", "灵隐寺", "云栖竹径", "啦啦啦", "西湖泛舟"};
+//    int[] image = new int[]{
+//            R.drawable.image2,
+//            R.drawable.image3,
+//            R.drawable.image4,
+//            R.drawable.image5,
+//            R.drawable.index_a,
+//    };
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -58,24 +70,77 @@ public class FirstFragment extends Fragment {
         }
     }
 
+
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 //        return inflater.inflate(R.layout.fragment_first, container, false);
         View v = inflater.inflate(R.layout.fragment_first, container, false);
-        //控件初始化
-        recyclerView=v.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        modelArrayList = new ArrayList<>();
-        rcAdapter = new RecyclerViewAdapter(getContext(),modelArrayList);
-        recyclerView.setAdapter(rcAdapter);
-        for (int i=0; i<title.length;i++){
-            RCModel rcModel = new RCModel(title[i],image[i]);
-            modelArrayList.add(rcModel);
-        }
-        rcAdapter.notifyDataSetChanged();
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ArticleDao articleDao = new ArticleDao();
+                articleList = (ArrayList<Article>) articleDao.getAllInfo();
+                recyclerView=v.findViewById(R.id.recycler_view);
+                //把得到集合的信息通知到主线程
+                Message message = handler.obtainMessage();
+                if (!articleList.isEmpty()){
+                    message.what=0x11;
+                    handler.sendMessage(message);
+                }
+
+//                articleList = (ArrayList<Article>) ArticleDao.getInfoById(2);
+            }
+        }).start();
 
         return v;
+
+        //控件初始化
+//        recyclerView=v.findViewById(R.id.recycler_view);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+//        recycelerView.setHasFixedSize(true);
+//        modelArrayList = new ArrayList<>();
+//        rcAdapter = new RecyclerViewAdapter(getContext(),modelArrayList);
+//        recyclerView.setAdapter(rcAdapter);
+//        for (int i=0; i<title.length;i++){
+//            RCModel rcModel = new RCModel(title[i],image[i]);
+//            modelArrayList.add(rcModel);
+//        }
+//        rcAdapter.notifyDataSetChanged();
+
     }
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(@NonNull Message msg) {
+            switch (msg.what){
+                case 0x11:
+                    //获得集合，开始列表初始化
+                    LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+                    recyclerView.setLayoutManager(layoutManager);
+                    recyclerView.setHasFixedSize(true);
+                    Log.e("arraylist","值:  "+articleList);
+//                    articleList=new ArrayList<>();
+                    rcAdapter=new RecyclerViewAdapter(getContext(),articleList);
+                    recyclerView.setAdapter(rcAdapter);
+                    rcAdapter.notifyDataSetChanged();
+                    break;
+                case 0x12:
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+//    private void InitRecyclerView() {
+//        //初始化视图
+//        recyclerView.setHasFixedSize(true);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+//        recyclerView.setLayoutManager(layoutManager);
+//        rcAdapter=new RecyclerViewAdapter(articleList);
+//        recyclerView.setAdapter(rcAdapter);
+//    }
 }
