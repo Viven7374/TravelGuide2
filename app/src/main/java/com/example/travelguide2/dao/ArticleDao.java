@@ -5,6 +5,7 @@ import static com.example.travelguide2.utils.JDBCUtils.getConnection;
 import android.util.Log;
 
 import com.example.travelguide2.entity.Article;
+import com.example.travelguide2.utils.JDBCUtils;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +16,38 @@ import java.util.List;
 
 public class ArticleDao {
 
+    private static final String TAG = "mysql-travelGuide-ArticleDao";
+
+    //增加一篇文章
+    public boolean addArticle(Article article){
+        Connection connection = JDBCUtils.getConnection();
+        try {
+            String sql = "insert into article(title,author,type,release_date,content,views,cover_picture) values(?,?,?,?,?,?,?)";
+            if (connection != null){
+                PreparedStatement ps = connection.prepareStatement(sql);
+                if (ps != null){
+                    ps.setString(1,article.getTitle());
+                    ps.setString(2,article.getAuthor());
+                    ps.setString(3,article.getType());
+                    ps.setString(4,article.getRelease_date());
+                    ps.setString(5,article.getContent());
+                    ps.setInt(6,article.getViews());
+                    ps.setString(7,article.getCover_picture());
+
+                    int rs = ps.executeUpdate();
+                    if (rs > 0)
+                        return true;
+                    else
+                        return false;
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            Log.e(TAG,"异常AddArticle:"+e.getMessage());
+            return false;
+        }
+        return false;
+    }
 
     //通过ID查找文章全部信息
     public List<Article> getAllInfo(){
