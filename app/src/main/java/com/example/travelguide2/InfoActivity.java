@@ -1,6 +1,7 @@
 package com.example.travelguide2;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,7 +19,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.travelguide2.dao.UserDao;
@@ -26,6 +29,7 @@ import com.example.travelguide2.entity.User;
 import com.example.travelguide2.utils.ActivityCollector;
 import com.example.travelguide2.widget.ItemGroup;
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.internal.ToolbarUtils;
 
 import java.util.Calendar;
@@ -64,6 +68,19 @@ public class InfoActivity extends AppCompatActivity {
         selectedIndex=-1;
         strGender=new String[]{"男","女"};
 
+        //返回按钮
+        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InfoActivity.this.onBackPressed();
+            }
+        });
+//        setSupportActionBar(toolBar);
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar!=null){
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//            actionBar.setHomeButtonEnabled(true);
+//        }
         //获取当前登陆用户
         SharedPreferences sp = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
         String userName = sp.getString("logUser","");

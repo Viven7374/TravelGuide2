@@ -1,6 +1,7 @@
 package com.example.travelguide2;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,14 +15,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.example.travelguide2.adapter.RCModel;
 import com.example.travelguide2.adapter.RecyclerViewAdapter;
 import com.example.travelguide2.dao.ArticleDao;
 import com.example.travelguide2.entity.Article;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class FirstFragment extends Fragment {
 
@@ -29,18 +29,6 @@ public class FirstFragment extends Fragment {
     ArrayList<Article> articleList;
     RecyclerViewAdapter rcAdapter;
     RecyclerView recyclerView;
-
-//    RecyclerView recyclerView;
-//    ArrayList<RCModel> modelArrayList;
-//    RecyclerViewAdapter rcAdapter;
-//    String[] title = new String[]{"最美西湖十景", "灵隐寺", "云栖竹径", "啦啦啦", "西湖泛舟"};
-//    int[] image = new int[]{
-//            R.drawable.image2,
-//            R.drawable.image3,
-//            R.drawable.image4,
-//            R.drawable.image5,
-//            R.drawable.index_a,
-//    };
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -126,6 +114,14 @@ public class FirstFragment extends Fragment {
 //                    articleList=new ArrayList<>();
                     rcAdapter=new RecyclerViewAdapter(getContext(),articleList);
                     recyclerView.setAdapter(rcAdapter);
+//                    rcAdapter.setItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
+//                        @Override
+//                        public void onItemClick(int position) {
+//                            Toast.makeText(getActivity(),articleList.get(position).getTitle(),Toast.LENGTH_SHORT).show();
+//                            Intent intent =new Intent(getActivity(),DetailActivity.class);
+//                            startActivity(intent);
+//                        }
+//                    });
                     rcAdapter.notifyDataSetChanged();
                     break;
                 case 0x12:

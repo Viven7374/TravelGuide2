@@ -64,12 +64,12 @@ public class ArticleDao {
                     ResultSet rs = ps.executeQuery();
                     if(rs!=null){
                         int count = rs.getMetaData().getColumnCount();//如果结果集不为空，先获取列的总数
-                        Log.e("prx","列总数：" + count);
+//                        Log.e("prx","列总数：" + count);
                         while (rs.next()){
                             for (int i=1;i<=count;i++){
                                 //获取数据表的列的名称
                                 String field = rs.getMetaData().getColumnName(i);
-                                Log.e("prx","值:  "+rs.getString(field));
+//                                Log.e("prx","值:  "+rs.getString(field));
                                 //通过键值来赋值给对应的article的元素
                                 switch (field){
                                     case "id":

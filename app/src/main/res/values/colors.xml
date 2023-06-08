@@ -10,6 +10,7 @@
 
 <resources>
     <color name="seed">#81d4fa</color>
+    <color name="colorTransparement">#00000000</color>
     <!--    <color name="active">#FFFFFF</color>-->
     <color name="md_theme_light_primary">#03a9f4</color>
     <color name="colorPrimary">#0288d1</color>
