@@ -13,8 +13,8 @@
     <item
         android:id="@+id/fragment3"
         android:enabled="true"
-        android:icon="@drawable/calendar_today_48px"
-        android:title="Calendar"/>
+        android:icon="@drawable/add_box_48px"
+        android:title="Add"/>
     <item
         android:id="@+id/fragment4"
         android:enabled="true"

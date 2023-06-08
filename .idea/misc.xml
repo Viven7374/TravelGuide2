@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/drawable/account_circle_48px.xml" value="0.176" />
+        <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/drawable/add_box_48px.xml" value="0.1185" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/drawable/add_location_alt_48px.xml" value="0.1" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/drawable/arrow_back_48px.xml" value="0.125" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/drawable/calendar_today_48px.xml" value="0.1" />
@@ -33,6 +34,7 @@
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/activity_main.xml" value="0.18489583333333334" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/activity_main_fragment.xml" value="0.19947916666666668" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/activity_register.xml" value="0.19947916666666668" />
+        <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/add_box_48px.xml" value="0.15052083333333333" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_blank.xml" value="0.19947916666666668" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_collect.xml" value="0.153125" />
         <entry key="..\:/AS_work/TravelGuide2/app/src/main/res/layout/fragment_first.xml" value="0.18489583333333334" />
