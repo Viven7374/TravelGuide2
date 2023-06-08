@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +35,12 @@ public class DetailActivity extends AppCompatActivity {
         CollapsingToolbarLayout collapsingToolbarLayout= findViewById(R.id.collapsing_toolbar_detail);
         ImageView article_imageView = findViewById(R.id.cover_image_view);
         TextView article_content = findViewById(R.id.article_content_text);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DetailActivity.this.onBackPressed();
+            }
+        });
 //        setSupportActionBar(toolbar);
 //        ActionBar actionBar = getSupportActionBar();
 //        if (actionBar!=null){

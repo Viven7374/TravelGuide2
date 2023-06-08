@@ -69,6 +69,12 @@ public class InfoActivity extends AppCompatActivity {
         strGender=new String[]{"男","女"};
 
         //返回按钮
+        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                InfoActivity.this.onBackPressed();
+            }
+        });
 //        setSupportActionBar(toolBar);
 //        ActionBar actionBar = getSupportActionBar();
 //        if (actionBar!=null){
