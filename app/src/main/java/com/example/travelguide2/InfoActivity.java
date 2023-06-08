@@ -180,6 +180,27 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
+        igId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"只能修改简介、性别、邮箱及生日！",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        igName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"只能修改简介、性别、邮箱及生日！",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        igCreateTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"只能修改简介、性别、邮箱及生日！",Toast.LENGTH_SHORT).show();
+            }
+        });
+
         //"完成"按钮监听
         toolBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
