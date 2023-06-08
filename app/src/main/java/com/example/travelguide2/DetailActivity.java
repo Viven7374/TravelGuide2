@@ -19,6 +19,7 @@ public class DetailActivity extends AppCompatActivity {
     public static final String ARTICLE_NAME = "title";
     public static final String ARTICLE_IMAGE_ID = "imageId";
     public static final String ARTICLE_CONTENT="content";
+    public static final String ARTICLE_AUTHOR = "author";
     private Toolbar toolbar;
 
     @Override
@@ -30,6 +31,7 @@ public class DetailActivity extends AppCompatActivity {
         String articleName = intent.getStringExtra(ARTICLE_NAME);
         String articleImageId = intent.getStringExtra(ARTICLE_IMAGE_ID);
         String articleContent = intent.getStringExtra(ARTICLE_CONTENT);
+        String articleAuthor = intent.getStringExtra(ARTICLE_AUTHOR);
         //获取实例
         Toolbar toolbar = findViewById(R.id.toolbar_detail);
         CollapsingToolbarLayout collapsingToolbarLayout= findViewById(R.id.collapsing_toolbar_detail);

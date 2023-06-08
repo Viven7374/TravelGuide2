@@ -55,6 +55,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull RecyclerViewAdapter.RCViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Article article= modelArrayList.get(position);
         holder.rc_title.setText(article.getTitle());
+        holder.textView2.setText(article.getAuthor());
         //设置图片,是数字类型,暂时为默认图片
         holder.rc_image.setImageResource(R.drawable.index_a);
 //        Glide.with(context).load(article.getTitle()).into(holder.rc_image);
@@ -70,6 +71,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra(DetailActivity.ARTICLE_NAME, article.getTitle());
                 intent.putExtra(DetailActivity.ARTICLE_IMAGE_ID, article.getId());
                 intent.putExtra(DetailActivity.ARTICLE_CONTENT,article.getContent());
+                intent.putExtra(DetailActivity.ARTICLE_AUTHOR,article.getAuthor());
                 context.startActivity(intent);
             }
         });
@@ -112,6 +114,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             rc_image=itemView.findViewById(R.id.rc_image);
             rc_title=itemView.findViewById(R.id.rc_titile);
             cardView=(CardView)itemView;
+            textView2=itemView.findViewById(R.id.rc_secondary_text);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
