@@ -15,8 +15,10 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 public class DetailActivity extends AppCompatActivity {
 
-    public static final String FRUIT_NAME = "name";
-    public static final String FRUIT_IMAGE_ID = "imageId";
+    public static final String ARTICLE_NAME = "title";
+    public static final String ARTICLE_IMAGE_ID = "imageId";
+    public static final String ARTICLE_CONTENT="content";
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,32 +26,34 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
         //获取传递进来的数据
         Intent intent=getIntent();
-        String fruitName = intent.getStringExtra(FRUIT_NAME);
-        String fruitImageId = intent.getStringExtra(FRUIT_IMAGE_ID);
+        String articleName = intent.getStringExtra(ARTICLE_NAME);
+        String articleImageId = intent.getStringExtra(ARTICLE_IMAGE_ID);
+        String articleContent = intent.getStringExtra(ARTICLE_CONTENT);
         //获取实例
         Toolbar toolbar = findViewById(R.id.toolbar_detail);
         CollapsingToolbarLayout collapsingToolbarLayout= findViewById(R.id.collapsing_toolbar_detail);
-        ImageView fruit_imageView = findViewById(R.id.cover_image_view);
-        TextView fruit_textView = findViewById(R.id.fruit_content_text);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar!=null){
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
+        ImageView article_imageView = findViewById(R.id.cover_image_view);
+        TextView article_content = findViewById(R.id.article_content_text);
+//        setSupportActionBar(toolbar);
+//        ActionBar actionBar = getSupportActionBar();
+//        if (actionBar!=null){
+//            actionBar.setDisplayHomeAsUpEnabled(true);
+//            actionBar.setHomeButtonEnabled(true);
+//        }
         //对实例进行赋值
-        collapsingToolbarLayout.setTitle(fruitName);
-//        Glide.with(this).load(fruitImageId).into(fruit_imageView);//Glide从网上下载
-        String fruitContent = generateFruitContent(fruitName);
-        fruit_textView.setText(fruitContent);
+        collapsingToolbarLayout.setTitle(articleName);
+//        Glide.with(this).load(fruitImageId).into(article_imageView);//Glide从网上下载
+//        String fruitContent = generateFruitContent(articleName);
+        article_content.setText(articleContent);
     }
 
-    private String generateFruitContent(String fruitName) {
-        StringBuilder fruitContent = new StringBuilder();
-        for (int i=0; i<500; i++){
-            fruitContent.append(fruitName);
-        }
-        return fruitContent.toString();
-    }
+//    private String generateFruitContent(String fruitName) {
+//        StringBuilder fruitContent = new StringBuilder();
+//        for (int i=0; i<500; i++){
+//            fruitContent.append(fruitName);
+//        }
+//        return fruitContent.toString();
+//    }
 
     //处理点赞按钮点击事件，点击之后调用finish() 关闭当前Activity
     @Override

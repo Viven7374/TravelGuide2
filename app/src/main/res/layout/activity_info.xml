@@ -17,6 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:menu="@menu/top_app_bar_edit_info"
+        app:navigationIcon="@drawable/arrow_back_48px"
         app:layout_scrollFlags="scroll|exitUntilCollapsed"
         app:title="编辑信息" />
     <!--        scroll|enterAlways|snap-->
