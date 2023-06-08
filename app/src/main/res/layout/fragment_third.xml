@@ -17,9 +17,9 @@
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/top_app_bar_edit_info"
+            app:menu="@menu/top_app_bar2"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="发布帖子" />
+            app:title="Post" />
         <!--        scroll|enterAlways|snap-->
     </com.google.android.material.appbar.AppBarLayout>
 
