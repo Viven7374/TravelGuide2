@@ -3,6 +3,7 @@ package com.example.travelguide2.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.example.travelguide2.DetailActivity;
 import com.example.travelguide2.InfoActivity;
 import com.example.travelguide2.R;
 import com.example.travelguide2.entity.Article;
+import com.example.travelguide2.utils.ImageHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,8 +58,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Article article= modelArrayList.get(position);
         holder.rc_title.setText(article.getTitle());
         holder.textView2.setText(article.getAuthor());
-        //设置图片,是数字类型,暂时为默认图片
-        holder.rc_image.setImageResource(R.drawable.index_a);
+
+        //设置图片
+        String string = article.getCover_picture();
+        Bitmap bitmap = ImageHelper.stringToBitmap(string);
+        holder.rc_image.setImageBitmap(bitmap);
+
 //        Glide.with(context).load(article.getTitle()).into(holder.rc_image);
         holder.position=position;
         //对Item监听

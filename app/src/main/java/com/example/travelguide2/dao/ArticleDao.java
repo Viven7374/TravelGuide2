@@ -5,6 +5,7 @@ import static com.example.travelguide2.utils.JDBCUtils.getConnection;
 import android.util.Log;
 
 import com.example.travelguide2.entity.Article;
+import com.example.travelguide2.utils.ImageHelper;
 import com.example.travelguide2.utils.JDBCUtils;
 
 import java.sql.Connection;
@@ -92,8 +93,7 @@ public class ArticleDao {
                                         break;
                                     //图片获得
                                     case "cover_picture":
-                                        article.cover_picture=null;
-
+                                        article.cover_picture=rs.getString(field);
                                 }
                             }
                             //保存到数组中

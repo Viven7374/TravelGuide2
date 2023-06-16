@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".LocationActivity">
+
+    <!--    标题栏-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:liftOnScroll="false"
+        tools:ignore="MissingConstraints">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_edit"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:menu="@menu/top_app_bar2"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="Guide" />
+        <!--        scroll|enterAlways|snap-->
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/locationInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:visibility="gone"/>
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/mapView"
+        android:layout_marginTop="64dp"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:clickable="true"/>
+    <Button
+        android:id="@+id/location_dh"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="670dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:text="导航"/>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
