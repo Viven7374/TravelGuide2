@@ -58,11 +58,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         Article article= modelArrayList.get(position);
         holder.rc_title.setText(article.getTitle());
         holder.textView2.setText(article.getAuthor());
-
-        //设置图片
+        //设置图片,是数字类型,暂时为默认图片
         String string = article.getCover_picture();
         Bitmap bitmap = ImageHelper.stringToBitmap(string);
+        //holder.rc_image.setImageResource(R.drawable.index_a);
         holder.rc_image.setImageBitmap(bitmap);
+
+
 
 //        Glide.with(context).load(article.getTitle()).into(holder.rc_image);
         holder.position=position;

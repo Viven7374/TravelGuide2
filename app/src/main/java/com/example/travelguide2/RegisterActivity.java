@@ -67,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                     user.setEmail("");
                     user.setCreate_time(Timestamp.valueOf(sdf.format(nowdate)).toString());
                     user.setBirthday("2000-1-1");
-                    user.setHead_portrait("");
+                    user.setHead_portrait(null);
                     user.setDescription("");
 
                     UserDao userDao = new UserDao();
@@ -88,12 +88,6 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                     }
                 }
-
-
-
-
-
-
 
             }
         });

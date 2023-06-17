@@ -180,7 +180,7 @@ public class UserDao {
     public Boolean updateInfo(User user){
         Connection connection = JDBCUtils.getConnection();
         try {
-            String sql ="update user set gender = ?, email = ?, birthday = ?, description = ? where userName = ?";
+            String sql ="update user set gender = ?, email = ?, birthday = ?, description = ?, head_portrait = ? where userName = ?";
             if (connection!=null){
                 PreparedStatement ps = connection.prepareStatement(sql);
                 if (ps!=null){
@@ -188,7 +188,8 @@ public class UserDao {
                     ps.setString(2, user.getEmail());
                     ps.setString(3, user.getBirthday());
                     ps.setString(4, user.getDescription());
-                    ps.setString(5, user.getUserName());
+                    ps.setString(5, user.getHead_portrait());
+                    ps.setString(6, user.getUserName());
 
                     int value = ps.executeUpdate();
                     if (value>0){

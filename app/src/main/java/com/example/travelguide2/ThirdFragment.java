@@ -47,8 +47,6 @@ public class ThirdFragment extends Fragment {
     private final int CODE_PICK_PHOTO = 1;
     private Uri imageUri;
     private String bitmapToString = null;
-    private String photoPath = null;
-    private Bitmap bitmap;
 
 
     // TODO: Rename parameter arguments, choose names that match

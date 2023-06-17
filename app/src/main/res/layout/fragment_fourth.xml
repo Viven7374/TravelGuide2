@@ -42,10 +42,11 @@
                 android:layout_height="wrap_content"
                 android:padding="32px"
                 android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="wrap_content"
+                <com.example.travelguide2.widget.RoundImageView
+                    android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
+                    android:scaleType="centerCrop"
                     android:id="@+id/index_portrait"
                     android:src="@drawable/account_circle_48px" />
                 <LinearLayout

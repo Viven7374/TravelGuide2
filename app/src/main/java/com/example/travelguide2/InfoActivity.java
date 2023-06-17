@@ -11,9 +11,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.MediaStore;
 import android.text.InputFilter;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,20 +30,25 @@ import android.widget.Toast;
 import com.example.travelguide2.dao.UserDao;
 import com.example.travelguide2.entity.User;
 import com.example.travelguide2.utils.ActivityCollector;
+import com.example.travelguide2.utils.ImageHelper;
 import com.example.travelguide2.widget.ItemGroup;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.internal.ToolbarUtils;
 
+import java.io.IOException;
 import java.util.Calendar;
 
 public class InfoActivity extends AppCompatActivity {
 
     private ItemGroup igId,igName,igDescription,igGender,igEmail,igBirthday,igCreateTime;
-    private LinearLayout riPortrait;
+    private ImageView riPortrait;
     Toolbar toolBar;
     int selectedIndex;
     private String[] strGender;
+    private final int CODE_PICK_PORTRAIT = 2;
+    private Uri imageUri;
+    private String bitmapToString = null;
 
 
 
@@ -64,6 +72,7 @@ public class InfoActivity extends AppCompatActivity {
         igEmail = findViewById(R.id.ig_email);
         igBirthday = findViewById(R.id.ig_birthday);
         igCreateTime = findViewById(R.id.ig_createTime);
+        riPortrait = findViewById(R.id.ri_portrait);
         toolBar=findViewById(R.id.toolbar_edit);
         selectedIndex=-1;
         strGender=new String[]{"男","女"};
@@ -95,6 +104,16 @@ public class InfoActivity extends AppCompatActivity {
         igEmail.getContentEdt().setText(user.getEmail());
         igBirthday.getContentEdt().setText(user.getBirthday());
         igCreateTime.getContentEdt().setText(user.getCreate_time());
+
+        //上传图片
+        riPortrait.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent_gallery = new Intent(Intent.ACTION_PICK);
+                intent_gallery.setType("image/*");
+                startActivityForResult(intent_gallery,CODE_PICK_PORTRAIT);
+            }
+        });
 
         //填写简介
         igDescription.setOnClickListener(new View.OnClickListener() {
@@ -214,6 +233,7 @@ public class InfoActivity extends AppCompatActivity {
                         user1.setBirthday(igBirthday.getContentEdt().getText().toString());
                         user1.setDescription(igDescription.getContentEdt().getText().toString());
                         user1.setUserName(igName.getContentEdt().getText().toString());
+                        user1.setHead_portrait(bitmapToString);
                         boolean flag = userDao.updateInfo(user1);
                         if (flag){
                             Toast.makeText(getApplicationContext(),"个人信息修改成功！",Toast.LENGTH_SHORT).show();
@@ -221,18 +241,29 @@ public class InfoActivity extends AppCompatActivity {
                         }else {
                             Toast.makeText(getApplicationContext(),"个人信息修改失败！",Toast.LENGTH_SHORT).show();
                         }
-                        //跳转到用户界面
-//                        Intent intent = new Intent(InfoActivity.this,MainFragmentActivity.class);
-//                        intent.putExtra("id","4");
-//                        startActivity(intent);
                 }
                 return true;
             }
         });
 
+    }
 
-
-
+    //获取图片
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CODE_PICK_PORTRAIT) {//相册
+            imageUri= data.getData();
+            //获取照片路径
+            riPortrait.setImageURI(imageUri);
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), imageUri);
+                bitmapToString = ImageHelper.bitmapToString(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
