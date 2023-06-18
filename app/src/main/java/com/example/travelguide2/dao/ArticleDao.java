@@ -50,7 +50,7 @@ public class ArticleDao {
         return false;
     }
 
-    //通过ID查找文章全部信息
+    //查找数据库所有文章
     public List<Article> getAllInfo(){
         List<Article> articleList=new ArrayList<>();//存放文章的数组
         Article article=new Article();//初始化数组
@@ -104,6 +104,68 @@ public class ArticleDao {
                         ps.close();
 //                        Log.e("sqllist","值:  "+articleList);
                         return articleList;
+                    }else {
+                        return null;
+                    }
+                }
+            }else {
+                return null;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return null;
+        }
+        return null;
+    }
+
+    public Article getInfoById(int id){
+        Article article=new Article();//初始化数组
+        Connection connection = getConnection();
+        try {
+            String sql = "select * from article where id=?";
+            if (connection!=null){
+                PreparedStatement ps = connection.prepareStatement(sql);
+                if (ps!=null){
+                    ps.setInt(1, id);
+                    ResultSet rs = ps.executeQuery();
+                    if(rs!=null){
+                        int count = rs.getMetaData().getColumnCount();//如果结果集不为空，先获取列的总数
+//                        Log.e("prx","列总数：" + count);
+                        while (rs.next()){
+                            for (int i=1;i<=count;i++){
+                                //获取数据表的列的名称
+                                String field = rs.getMetaData().getColumnName(i);
+//                                Log.e("prx","值:  "+rs.getString(field));
+                                //通过键值来赋值给对应的article的元素
+                                switch (field){
+                                    case "id":
+                                        article.id=rs.getInt(field);
+                                        break;
+                                    case "author":
+                                        article.author=rs.getString(field);
+                                        break;
+                                    case "release_date":
+                                        article.release_date=rs.getString(field);
+                                        break;
+                                    case "title":
+                                        article.title=rs.getString(field);
+                                        break;
+                                    case "content":
+                                        article.content=rs.getString(field);
+                                        break;
+                                    case "views":
+                                        article.views=rs.getInt(field);
+                                        break;
+                                    //图片获得
+                                    case "cover_picture":
+                                        article.cover_picture=rs.getString(field);
+                                }
+                            }
+                        }
+                        connection.close();
+                        ps.close();
+                        Log.e("sqllist","值:  "+article);
+                        return article;
                     }else {
                         return null;
                     }

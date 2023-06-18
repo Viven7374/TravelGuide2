@@ -79,25 +79,10 @@ public class FirstFragment extends Fragment {
                     message.what=0x11;
                     handler.sendMessage(message);
                 }
-
-//                articleList = (ArrayList<Article>) ArticleDao.getInfoById(2);
             }
         }).start();
 
         return v;
-
-        //控件初始化
-//        recyclerView=v.findViewById(R.id.recycler_view);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        recycelerView.setHasFixedSize(true);
-//        modelArrayList = new ArrayList<>();
-//        rcAdapter = new RecyclerViewAdapter(getContext(),modelArrayList);
-//        recyclerView.setAdapter(rcAdapter);
-//        for (int i=0; i<title.length;i++){
-//            RCModel rcModel = new RCModel(title[i],image[i]);
-//            modelArrayList.add(rcModel);
-//        }
-//        rcAdapter.notifyDataSetChanged();
 
     }
     @SuppressLint("HandlerLeak")
@@ -131,12 +116,4 @@ public class FirstFragment extends Fragment {
         }
     };
 
-//    private void InitRecyclerView() {
-//        //初始化视图
-//        recyclerView.setHasFixedSize(true);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-//        recyclerView.setLayoutManager(layoutManager);
-//        rcAdapter=new RecyclerViewAdapter(articleList);
-//        recyclerView.setAdapter(rcAdapter);
-//    }
 }

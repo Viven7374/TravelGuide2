@@ -68,19 +68,14 @@ public class InfoActivity extends AppCompatActivity {
         selectedIndex=-1;
         strGender=new String[]{"男","女"};
 
-        //返回按钮
+        //返回按钮监听
         toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 InfoActivity.this.onBackPressed();
             }
         });
-//        setSupportActionBar(toolBar);
-//        ActionBar actionBar = getSupportActionBar();
-//        if (actionBar!=null){
-//            actionBar.setDisplayHomeAsUpEnabled(true);
-//            actionBar.setHomeButtonEnabled(true);
-//        }
+
         //获取当前登陆用户
         SharedPreferences sp = getSharedPreferences("UserInfo", Context.MODE_PRIVATE);
         String userName = sp.getString("logUser","");
