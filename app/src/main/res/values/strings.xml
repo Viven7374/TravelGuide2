@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TravelGuide2</string>
+    <string name="app_name">杭州旅游指南</string>
     //Headings
     <string name="heading_one">Quick &amp;Easy Payments</string>
     <string name="heading_two">Instant Notification</string>
