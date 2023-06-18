@@ -3,6 +3,7 @@ package com.example.travelguide2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -21,6 +22,7 @@ import com.example.travelguide2.dao.UserDao;
 import com.example.travelguide2.entity.User;
 import com.example.travelguide2.fragment.CollectFragment;
 import com.example.travelguide2.fragment.PostFragment;
+import com.example.travelguide2.utils.ImageHelper;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.tabs.TabLayout;
 
@@ -116,6 +118,12 @@ public class FourthFragment extends Fragment {
         UserDao userDao = new UserDao();
         User user = userDao.getUserInfo(userName);
         indexDescription.setText(user.getDescription());
+        //显示用户头像
+        String string = user.getHead_portrait();
+        Bitmap bitmap = ImageHelper.stringToBitmap(string);
+        //indexPortrait.setImageResource(R.drawable.account_circle_48px);
+        indexPortrait.setImageBitmap(bitmap);
+
 
         //编辑按钮监听
         editButton=v.findViewById(R.id.edit_info_bt);
@@ -124,7 +132,6 @@ public class FourthFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent=new Intent(getActivity(),InfoActivity.class);
                 startActivity(intent);
-
             }
         });
 
